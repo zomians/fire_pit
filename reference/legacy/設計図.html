@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>麻の葉 FIRE PIT — 設計図</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #d8d3c5; height: 100%; font-family: "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; }
+  #root { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#d8d3c5">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#d8d3c5"/>
+    <g transform="translate(600,400)" stroke="#1a1a1a" stroke-width="6" fill="none" stroke-linejoin="round">
+      <polygon points="0,-260 225,-130 225,130 0,260 -225,130 -225,-130" fill="#f5f1e8"/>
+      <line x1="0" y1="0" x2="0" y2="-260"/>
+      <line x1="0" y1="0" x2="225" y2="-130"/>
+      <line x1="0" y1="0" x2="225" y2="130"/>
+      <line x1="0" y1="0" x2="0" y2="260"/>
+      <line x1="0" y1="0" x2="-225" y2="130"/>
+      <line x1="0" y1="0" x2="-225" y2="-130"/>
+      <line x1="0" y1="-260" x2="112" y2="-130"/>
+      <line x1="112" y1="-130" x2="225" y2="0" stroke-width="3" opacity="0.5"/>
+      <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" fill="#d8d3c5" stroke-width="5"/>
+    </g>
+    <text x="600" y="730" font-family="monospace" font-size="40" fill="#1a1a1a" text-anchor="middle" letter-spacing="4">麻の葉 FIRE PIT</text>
+  </svg>
+</template>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="drawing-utils.jsx"></script>
+<script type="text/babel" src="plan-view.jsx"></script>
+<script type="text/babel" src="section-view.jsx"></script>
+<script type="text/babel" src="cutting-pattern.jsx"></script>
+
+<script type="text/babel">
+  const App = () => (
+    <DesignCanvas>
+      <DCSection
+        id="overview"
+        title="麻の葉 FIRE PIT — 設計図"
+        subtitle="6000 × 6000mm / 琉球石灰岩 t=200 / 中央焚き火 ⌀1000 / 全3図"
+      >
+        <DCArtboard id="plan" label="A-01 · 平面図 PLAN  S=1:50" width={1080} height={760}>
+          <PlanView />
+        </DCArtboard>
+
+        <DCArtboard id="section" label="A-02 · A-A 断面図 SECTION  S=1:30" width={1080} height={760}>
+          <SectionView />
+        </DCArtboard>
+
+        <DCArtboard id="cut" label="A-03 · 切り出しパターン CUT PATTERN  S=1:50/25" width={1080} height={760}>
+          <CuttingPattern />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
